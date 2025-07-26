@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Red's Gene Editing Blog</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #cc0000;
+    }
+    .entry, .comment-section {
+      margin-bottom: 3rem;
+    }
+    .comment-slider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .comments {
+      flex-grow: 1;
+      overflow: hidden;
+      max-width: 100%;
+    }
+    .comment {
+      display: none;
+      transition: transform 0.3s ease-in-out;
+      padding: 1rem;
+      background-color: #f9f9f9;
+      border-left: 4px solid #ccc;
+      border-radius: 6px;
+    }
+    .comment.active {
+      display: block;
+    }
+    button {
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #a00000;
+    }
+    .timestamp {
+      color: #777;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Red's Gene Editing Blog</h1>
+    
+    <div class="entry">
+      <h2>Blog Entry #1 - July 26th, 2025: 4:01 am</h2>
+      <p>Four years ago, my sister’s dog, Red, passed from mitral valve disease. She poured everything into saving him. In his memory, I founded Red’s Gene Editing to prevent heart conditions in dogs using CRISPR technology. We'll genetically edit embryos, raise them in surrogates, and offer peace of mind to future pet owners. 🐾</p>
+      <p>I know it’s controversial. I welcome all opinions—drop them below, and I’ll respond in my next entry!</p>
+      <p class="timestamp">~ Sol K.</p>
+    </div>
+
+    <div class="comment-section">
+      <h3>Comments</h3>
+      <div class="comment-slider">
+        <button onclick="prevComment(this)">⬅</button>
+        <div class="comments">
+          <div class="comment active">
+            <strong>user1234 - 4:02 am:</strong>
+            <p>Hey Sol! I lost my dog to mitral valve disease too. I love what you’re doing. Prevention is better than treatment! Cheers! 🐶</p>
+          </div>
+          <div class="comment">
+            <strong>man1 - 5:15 am:</strong>
+            <p>This is unnatural! You’re altering God’s creatures. Today it's dogs, tomorrow it's people. You’re playing with fire.</p>
+          </div>
+          <div class="comment">
+            <strong>Kim - 7:40 am:</strong>
+            <p>I agree with man1. GMO crops already caused issues. Why would dogs be different? You’ll just cause unintended consequences.</p>
+          </div>
+        </div>
+        <button onclick="nextComment(this)">➡</button>
+      </div>
+    </div>
+
+    <div class="entry">
+      <h2>Blog Entry #2 - July 26th, 2025: 7:31 am</h2>
+      <p>Wowza! You guys blew this up overnight! Here’s my take:</p>
+      <p><strong>user1234</strong>, thanks for the support. I agree — prevention is key. Vet malpractice is a real issue. This is why we need long-term, affordable solutions like ours.</p>
+      <p><strong>man1</strong>, I hear your fears. But selective breeding is gene editing too. We’re just making it faster and safer. I support banning human gene editing, and I’m working on legislation to do just that.</p>
+      <p><strong>Kim</strong>, solid points. We’re implementing rigorous ID tracking, hormone testing, and microchipping to ensure no illegal breeding occurs. Also, our methods will be transparent and public. We’re not hiding anything.</p>
+      <p>CRISPR lets us prevent diseases like mitral valve disease before birth. That means healthier, happier pets. 🧬</p>
+      <p class="timestamp">~ Sol K.</p>
+    </div>
+
+    <div class="comment-section">
+      <h3>Comments</h3>
+      <div class="comment-slider">
+        <button onclick="prevComment(this)">⬅</button>
+        <div class="comments">
+          <div class="comment active">
+            <strong>Kim - 7:41 am:</strong>
+            <p>Wow. I apologize for my previous comments Sol. Consider me a new customer! 👍</p>
+          </div>
+          <div class="comment">
+            <strong>Jim - 7:40 am:</strong>
+            <p>@man1 <br>*Image of watermelon then vs. now*</p>
+          </div>
+        </div>
+        <button onclick="nextComment(this)">➡</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function nextComment(btn) {
+      const slider = btn.closest('.comment-slider');
+      const comments = slider.querySelectorAll('.comment');
+      let current = Array.from(comments).findIndex(c => c.classList.contains('active'));
+      comments[current].classList.remove('active');
+      let next = (current + 1) % comments.length;
+      comments[next].classList.add('active');
+    }
+
+    function prevComment(btn) {
+      const slider = btn.closest('.comment-slider');
+      const comments = slider.querySelectorAll('.comment');
+      let current = Array.from(comments).findIndex(c => c.classList.contains('active'));
+      comments[current].classList.remove('active');
+      let prev = (current - 1 + comments.length) % comments.length;
+      comments[prev].classList.add('active');
+    }
+  </script>
+</body>
+</html>
